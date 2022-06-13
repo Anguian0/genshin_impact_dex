@@ -1,16 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
-h1, h2, h3, h4, h5, h6, p{
-  font-family: 'Poppins', sans-serif;
-  color: rgb(255, 255, 255)
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-family: "Poppins", sans-serif;
+  /* color: rgb(255, 255, 255); */
+  text-shadow: 1px 1px 2px black;
 }
 
-body {
+/* body {
   background-image: url(/public/fondo.svg);
   background-size: cover;
   background-repeat: no-repeat;
-}
+} */
 
 /* .App {
   text-align: center;
 } */
+
+.card {
+  margin: 15% auto 10% auto;
+  padding: 50px;
+  /* background-image: url(/public/card.jpg);
+  background-repeat: no-repeat;
+  background-size: cover; */
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  z-index: -10;
+  visibility: visible;
+  }
+
+  @media (max-width: 750px) {
+    #video { display: none; }
+    body {
+      background: url("/public/fondo.svg") no-repeat;
+      background-size: cover;
+    }
+}

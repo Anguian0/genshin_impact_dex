@@ -1,6 +1,7 @@
 import "./App.css";
 // import { type } from "@testing-library/user-event/dist/type";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const tipos = {
   artifacts: "Artefactos",
@@ -30,21 +31,22 @@ function App() {
         types: respJson.types,
       });
     } else {
-      setGenshinState({
-        [item]: respJson,
-      });
+      setGenshinState({ types: [...genshinState.types], [item]: respJson });
     }
 
     // setGenshinState({
     //   type
     //   // types: types
     // });
-    
   };
-  fetchGenshinApi("types");
+
+  useEffect(() => {
+    fetchGenshinApi("types");
+  }, []);
 
   const handleChangeType = ({ target }) => {
     const url = `https://api.genshin.dev/${target.value}`;
+    fetchGenshinApi(target.value, url);
   };
 
   return (
@@ -53,14 +55,15 @@ function App() {
         // src="/genshin.mp4"
         src="https://genshin.hoyoverse.com/_nuxt/videos/3e78e80.mp4"
         id="video"
-        autoplay="true"
-        muted="true"
-        loop="true"
+        autoPlay={true}
+        muted={true}
+        loop={true}
       ></video>
       <div className="text-center container card shadow-lg">
-        <h1 className="fw-bold text-light align-middle">
-          <i class="bi bi-controller"></i> Genshin impact
-        </h1>
+        <img className="align-middle pb-3 w-75 mx-auto" src="/logo.png" alt=""/>
+        {/* <h1 className="fw-bold text-light align-middle">
+          <i className="bi bi-controller"></i> Genshin impact
+        </h1> */}
         <select
           className="form-select"
           name="types"
@@ -73,6 +76,28 @@ function App() {
             </option>
           ))}
         </select>
+
+        {genshinState.artifacts && (
+          <select name="artifacts" className="form-select mt-2">
+            <option value="">Selecciona un set de artefactos</option>
+            {genshinState.artifacts.map((artifact) => (
+              <option key={artifact} value={artifact}>
+                {artifact}
+              </option>
+            ))}
+          </select>
+        )}
+
+        {genshinState.boss && (
+          <select name="boss" className="form-select mt-2">
+            <option value="">Selecciona un jefe</option>
+            {genshinState.boss.map((bos) => (
+              <option key={bos} value={bos}>
+                {bos}
+              </option>
+            ))}
+          </select>
+        )}
       </div>
     </div>
 

@@ -22,9 +22,13 @@ p {
   text-align: center;
 } */
 
+.container {
+  width: 700px;
+}
+
 .card {
   margin: 15% auto 10% auto;
-  padding: 50px;
+  padding: 10px 40px 40px 40px;
   /* background-image: url(/public/card.jpg);
   background-repeat: no-repeat;
   background-size: cover; */
